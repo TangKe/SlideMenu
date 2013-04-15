@@ -550,6 +550,11 @@ public class SlideMenu extends ViewGroup {
 			break;
 		}
 	}
+	
+	@Override
+	public boolean shouldDelayChildPressedState() {
+		return false;
+	}
 
 	private void invalidateViewVisibility(View view, int visibility) {
 		if (null != view && view.getVisibility() != visibility) {
