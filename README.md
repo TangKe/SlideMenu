@@ -5,9 +5,9 @@ SlideMenu is a open source android library proivde slide effect to the layout an
 #Setup
 -----
 To enable fantasitic feature to your project with the following steps:
-* Download the project from [GitHub][1]
-* Import it to your Eclipse workspace
-* Set your project properties to add a android project library, and select SlideMenu
+1. Download the project from [GitHub][1]
+2. Import it to your Eclipse workspace
+3. Set your project properties to add a android project library, and select SlideMenu
 
 #Usage
 -----
@@ -70,6 +70,11 @@ public class SlideMenuActivity extends Activity{
 
 </com.aretha.slidemenu.SlideMenu>
 ```
-*NOTE*: the child view of SlideMenu must specified layout_role attribute
+*_NOTE_: the child view of SlideMenu must specified layout_role attribute, otherwise the SlideMenu will throw a Exception. SlideMenu must the root of layout.*
+* `primaryShadowWidth` the shadow width above primary menu, left side of content
+* `secondaryShadowWidth` the shadow width above secondary menu, right side of content
+* `primaryShadowDrawable` the shadow drawable above primary menu, left side of content
+* `sencondaryShadowDrawable` the shadow drawable above secondary menu, right side of content
+* `slideDirection` specified the slide direction of SlideMenu, left, right, left|right
 
 [1]: http://www.github.com/TangKe/SlideMenu.git
