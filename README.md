@@ -3,15 +3,15 @@ SlideMenu
 SlideMenu is a open source android library proivde slide effect to the layout and show the hidden menu behind the layout
 
 #Setup
------
+------
 To enable fantasitic feature to your project with the following steps:
 1. Download the project from [GitHub][1]
 2. Import it to your Eclipse workspace
 3. Set your project properties to add a android project library, and select SlideMenu
 
 #Usage
------
-Use the SlideMenu as a View as usual, Java and xml both support
+------
+Use the SlideMenu as a View as usual, Java and xml both supported
 ##Java example:
 ```java
 public class SlideMenuActivity extends Activity{
@@ -70,11 +70,29 @@ public class SlideMenuActivity extends Activity{
 
 </com.aretha.slidemenu.SlideMenu>
 ```
-*_NOTE_: the child view of SlideMenu must specified layout_role attribute, otherwise the SlideMenu will throw a Exception. SlideMenu must the root of layout.*
+*NOTE: the child view of SlideMenu must specified layout_role attribute, otherwise the SlideMenu will throw a Exception. SlideMenu must the root of layout.*
 * `primaryShadowWidth` the shadow width above primary menu, left side of content
 * `secondaryShadowWidth` the shadow width above secondary menu, right side of content
 * `primaryShadowDrawable` the shadow drawable above primary menu, left side of content
 * `sencondaryShadowDrawable` the shadow drawable above secondary menu, right side of content
 * `slideDirection` specified the slide direction of SlideMenu, left, right, left|right
+
+#Author
+Tang Ke
+
+#License
+Copyright (c) 2011-2013 Tang Ke
+
+Licensed under the Apache License, Version 2.0 (the "License");
+you may not use this file except in compliance with the License.
+You may obtain a copy of the License at
+
+    http://www.apache.org/licenses/LICENSE-2.0
+
+Unless required by applicable law or agreed to in writing, software
+distributed under the License is distributed on an "AS IS" BASIS,
+WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+See the License for the specific language governing permissions and
+limitations under the License.
 
 [1]: http://www.github.com/TangKe/SlideMenu.git

@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<fragment xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:slidemenudemo="http://schemas.android.com/apk/res-auto"
+    android:name="com.aretha.slidemenudemo.fragment.BaseListFragment"
+    android:layout_width="300dip"
+    android:layout_height="wrap_content"
+    slidemenudemo:layout_role="primaryMenu" />

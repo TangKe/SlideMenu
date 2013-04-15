@@ -18,3 +18,8 @@ local.properties
 # Eclipse project files
 .classpath
 .project
+
+*/bin
+*/gen
+*/.settings
+*/lint.xml

@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:slidemenudemo="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    slidemenudemo:layout_role="content"
+    android:background="#ffffff"
+    android:orientation="vertical"
+    android:padding="10dip" >
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/primary_shadow_width" />
+
+    <SeekBar
+        android:id="@+id/primaryShadowWidth"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:max="100"
+        android:progress="30" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/secondary_shadow_width" />
+
+    <SeekBar
+        android:id="@+id/secondaryShadowWidth"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:max="100"
+        android:progress="30" />
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" >
+
+        <ToggleButton
+            android:id="@+id/slideLeft"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="left"
+            android:checked="true"
+            android:textOff="@string/slide_left_disable"
+            android:textOn="@string/slide_left_enable" />
+
+        <ToggleButton
+            android:id="@+id/slideRight"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="right"
+            android:checked="true"
+            android:textOff="@string/slide_right_disable"
+            android:textOn="@string/slide_right_enable" />
+    </FrameLayout>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/slide_mode" />
+
+    <RadioGroup
+        android:id="@+id/slideMode"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:checkedButton="@+id/slideContent"
+        android:orientation="horizontal" >
+
+        <RadioButton
+            android:id="@+id/slideContent"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/slide_content" />
+
+        <RadioButton
+            android:id="@+id/slideWindow"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/slide_window" />
+    </RadioGroup>
+
+</LinearLayout>
