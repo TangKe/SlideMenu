@@ -550,7 +550,7 @@ public class SlideMenu extends ViewGroup {
 			break;
 		}
 	}
-	
+
 	@Override
 	public boolean shouldDelayChildPressedState() {
 		return false;

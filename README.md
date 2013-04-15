@@ -1,17 +1,17 @@
-SlideMenu
+SlideMenu([Demo][2])
 =========
-SlideMenu is a open source android library proivde slide effect to the layout and show the hidden menu behind the layout
+SlideMenu is a open source android library provide slide effect to the layout and show the hidden menu behind the layout
 
 #Setup
 ------
-To enable fantasitic feature to your project with the following steps:
+To enable fantasitic feature in your project with the following simple steps:
 1. Download the project from [GitHub][1]
 2. Import it to your Eclipse workspace
-3. Set your project properties to add a android project library, and select SlideMenu
+3. Set your project properties, then add a android project library, and select SlideMenu
 
 #Usage
 ------
-Use the SlideMenu as a View as usual, Java and xml both supported
+Use the SlideMenu as a View as usual, Java and XML are both supported
 ##Java example:
 ```java
 public class SlideMenuActivity extends Activity{
@@ -70,7 +70,7 @@ public class SlideMenuActivity extends Activity{
 
 </com.aretha.slidemenu.SlideMenu>
 ```
-*NOTE: the child view of SlideMenu must specified layout_role attribute, otherwise the SlideMenu will throw a Exception. SlideMenu must the root of layout.*
+*NOTE: the children of SlideMenu must be specified layout_role attribute, otherwise the SlideMenu will throw a Exception. SlideMenu must be the root of layout.*
 * `primaryShadowWidth` the shadow width above primary menu, left side of content
 * `secondaryShadowWidth` the shadow width above secondary menu, right side of content
 * `primaryShadowDrawable` the shadow drawable above primary menu, left side of content
@@ -96,3 +96,4 @@ See the License for the specific language governing permissions and
 limitations under the License.
 
 [1]: http://www.github.com/TangKe/SlideMenu.git
+[2]: https://github.com/TangKe/Aretha/wiki/SlideMenu.apk
