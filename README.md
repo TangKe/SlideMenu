@@ -2,7 +2,7 @@ SlideMenu([Demo][2])
 =========
 SlideMenu is a open source android library provide slide effect to the layout and show the hidden menu behind the layout
 
-![snap1](http://www.github.com/TangKe/SlideMenu/wiki/images/snap1.png) ![snap2](http://www.github.com/TangKe/SlideMenu/wiki/images/snap2.png) ![snap3](http://www.github.com/TangKe/SlideMenu/wiki/images/snap3.png) ![snap4](http://www.github.com/TangKe/SlideMenu/wiki/images/snap4.png) ![snap5](http://www.github.com/TangKe/SlideMenu/wiki/images/snap5.png)
+![Snap](https://github.com/TangKe/SlideMenu/wiki/images/snap1.png) ![Snap](https://github.com/TangKe/SlideMenu/wiki/images/snap2.png) ![Snap](https://github.com/TangKe/SlideMenu/wiki/images/snap3.png) ![Snap](https://github.com/TangKe/SlideMenu/wiki/images/snap4.png) ![Snap](https://github.com/TangKe/SlideMenu/wiki/images/snap5.png)
 
 #Setup
 ------
