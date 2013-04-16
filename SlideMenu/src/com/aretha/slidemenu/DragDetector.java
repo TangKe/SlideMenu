@@ -18,7 +18,9 @@ import android.view.MotionEvent;
 
 /**
  * A helper interface to tell {@link SlideMenu} should/shouldn't intercept
- * {@link MotionEvent}
+ * {@link MotionEvent}, ViewCompat.canScrollHorizontally(View v, int direction)
+ * is not implement below API level 9, so provide this interface to detect
+ * scroll
  * 
  * @author Tank
  * 
