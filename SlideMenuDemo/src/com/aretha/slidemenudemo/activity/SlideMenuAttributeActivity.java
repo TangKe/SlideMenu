@@ -1,5 +1,7 @@
 package com.aretha.slidemenudemo.activity;
 
+import android.view.View;
+import android.view.View.OnClickListener;
 import android.widget.CompoundButton;
 import android.widget.CompoundButton.OnCheckedChangeListener;
 import android.widget.RadioGroup;
@@ -13,7 +15,7 @@ import com.aretha.slidemenudemo.R;
 
 public class SlideMenuAttributeActivity extends BaseSlideMenuActivity implements
 		OnSeekBarChangeListener, OnCheckedChangeListener,
-		android.widget.RadioGroup.OnCheckedChangeListener {
+		android.widget.RadioGroup.OnCheckedChangeListener, OnClickListener {
 	private SlideMenu mSlideMenu;
 	private SeekBar mPrimaryShadowWidth;
 	private SeekBar mSecondaryShadowWidth;
@@ -89,6 +91,18 @@ public class SlideMenuAttributeActivity extends BaseSlideMenuActivity implements
 			break;
 		case R.id.slideWindow:
 			mSlideMenu.setSlideMode(SlideMenu.MODE_SLIDE_WINDOW);
+			break;
+		}
+	}
+
+	@Override
+	public void onClick(View v) {
+		switch (v.getId()) {
+		case R.id.open:
+			mSlideMenu.open(true, true);
+			break;
+		case R.id.close:
+			mSlideMenu.close(true);
 			break;
 		}
 	}

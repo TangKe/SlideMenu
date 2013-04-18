@@ -16,5 +16,7 @@
     <string name="slidemenu_with_web_view">SlideMenu With WebView</string>
     <string name="large_text">Android is a Linux-based operating system[12] designed primarily for touchscreen mobile devices such as smartphones and tablet computers. Initially developed by Android, Inc., which Google backed financially and later bought in 2005,[13] Android was unveiled in 2007 along with the founding of the Open Handset Alliance: a consortium of hardware, software, and telecommunication companies devoted to advancing open standards for mobile devices.[14] The first Android-powered phone was sold in October 2008.[15]
 Android is open source and Google releases the code under the Apache License.[12] This open source code and permissive licensing allows the software to be freely modified and distributed by device manufacturers, wireless carriers and enthusiast developers. Additionally, Android has a large community of developers writing applications ("apps") that extend the functionality of devices, written primarily in a customized version of the Java programming language.[16] In October 2012, there were approximately 700,000 apps available for Android, and the estimated number of applications downloaded from Google Play, Android\'s primary app store, was 25 billion.[17][18]</string>
+    <string name="open">Open</string>
+    <string name="close">Close</string>
 
 </resources>

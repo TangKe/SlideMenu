@@ -340,6 +340,46 @@ public class SlideMenu extends ViewGroup {
 	}
 
 	/**
+	 * Open the SlideMenu
+	 * 
+	 * @param isSlideLeft
+	 * @param isAnimated
+	 */
+	public void open(boolean isSlideLeft, boolean isAnimated) {
+		if (STATE_OPEN == mCurrentState) {
+			return;
+		}
+
+		int targetOffset = isSlideLeft ? mContentBoundsLeft
+				: mContentBoundsRight;
+
+		if (isAnimated) {
+			smoothScrollContentTo(targetOffset);
+		} else {
+			mScroller.abortAnimation();
+			setCurrentOffset(targetOffset);
+		}
+	}
+
+	/**
+	 * Close the SlideMenu
+	 * 
+	 * @param isAnimated
+	 */
+	public void close(boolean isAnimated) {
+		if (STATE_CLOSE == mCurrentState) {
+			return;
+		}
+
+		if (isAnimated) {
+			smoothScrollContentTo(0);
+		} else {
+			mScroller.abortAnimation();
+			setCurrentOffset(0);
+		}
+	}
+
+	/**
 	 * Get current slide direction, {@link #FLAG_DIRECTION_LEFT},
 	 * {@link #FLAG_DIRECTION_RIGHT} or {@link #FLAG_DIRECTION_LEFT}|
 	 * {@link #FLAG_DIRECTION_RIGHT}
@@ -384,7 +424,7 @@ public class SlideMenu extends ViewGroup {
 			duration = 3 * Math.round(1000 * Math.abs(distance / velocity));
 		}
 		duration = Math.min(duration, MAX_DURATION);
-
+		mScroller.abortAnimation();
 		mScroller.startScroll(mCurrentContentOffset, 0, distance, 0, duration);
 		invalidate();
 	}

@@ -80,4 +80,24 @@
             android:text="@string/slide_window" />
     </RadioGroup>
 
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" >
+
+        <Button
+            android:id="@+id/open"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:onClick="onClick"
+            android:text="@string/open" />
+
+        <Button
+            android:id="@+id/close"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="right"
+            android:onClick="onClick"
+            android:text="@string/close" />
+    </FrameLayout>
+
 </LinearLayout>
