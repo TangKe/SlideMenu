@@ -2,7 +2,6 @@ package com.aretha.slidemenudemo;
 
 import java.util.List;
 
-
 import android.app.ListActivity;
 import android.content.ComponentName;
 import android.content.Intent;

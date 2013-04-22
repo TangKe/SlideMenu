@@ -29,6 +29,13 @@
             </intent-filter>
         </activity>
         <activity
+            android:name=".activity.SlideMenuCallbackActivity"
+            android:label="@string/slidemenu_callback" >
+            <intent-filter>
+                <action android:name="com.aretha.demobundle.DEMO" />
+            </intent-filter>
+        </activity>
+        <activity
             android:name=".activity.SlideMenuWithHorizontalScrollView"
             android:label="@string/slidemenu_with_horizontal_scroll_view" >
             <intent-filter>

@@ -52,10 +52,10 @@ public class SlideMenu extends ViewGroup {
 	public final static int MODE_SLIDE_WINDOW = 1;
 	public final static int MODE_SLIDE_CONTENT = 2;
 
-	private final static int STATE_OPEN = 1;
-	private final static int STATE_CLOSE = 2;
-	private final static int STATE_DRAG = 3;
-	private final static int STATE_SCROLL = 4;
+	public final static int STATE_CLOSE = 0;
+	public final static int STATE_OPEN = 1;
+	public final static int STATE_DRAG = 2;
+	public final static int STATE_SCROLL = 3;
 
 	private final static int POSITION_LEFT = -1;
 	private final static int POSITION_MIDDLE = 0;
@@ -95,6 +95,8 @@ public class SlideMenu extends ViewGroup {
 
 	private int mWidth;
 	private int mHeight;
+
+	private OnSlideStateChangeListener mSlideStateChangeListener;
 
 	private VelocityTracker mVelocityTracker;
 	private Scroller mScroller;
@@ -399,6 +401,26 @@ public class SlideMenu extends ViewGroup {
 		this.mSlideDirectionFlag = slideDirectionFlag;
 	}
 
+	public OnSlideStateChangeListener getOnSlideStateChangeListener() {
+		return mSlideStateChangeListener;
+	}
+
+	public void setOnSlideStateChangeListener(
+			OnSlideStateChangeListener slideStateChangeListener) {
+		this.mSlideStateChangeListener = slideStateChangeListener;
+	}
+
+	public int getCurrentState() {
+		return mCurrentState;
+	}
+
+	protected void setCurrentState(int currentState) {
+		if (null != mSlideStateChangeListener && currentState != mCurrentState) {
+			mSlideStateChangeListener.onSlideStateChange(currentState);
+		}
+		this.mCurrentState = currentState;
+	}
+
 	/**
 	 * Equals invoke {@link #smoothScrollContentTo(int, float)} with 0 velocity
 	 * 
@@ -416,7 +438,7 @@ public class SlideMenu extends ViewGroup {
 	 * @param velocity
 	 */
 	public void smoothScrollContentTo(int targetOffset, float velocity) {
-		mCurrentState = STATE_SCROLL;
+		setCurrentState(STATE_SCROLL);
 		int distance = targetOffset - mCurrentContentOffset;
 		velocity = Math.abs(velocity);
 		int duration = 400;
@@ -476,13 +498,13 @@ public class SlideMenu extends ViewGroup {
 			if (Math.abs(distance) >= mTouchSlop && mIsTapContent) {
 				DragDetector dragDetector = mDragDetector;
 				if (null == dragDetector) {
-					mCurrentState = STATE_DRAG;
+					setCurrentState(STATE_DRAG);
 					return true;
 				}
 
 				if ((distance > 0 && dragDetector.isDragRightable())
 						|| (distance < 0 && dragDetector.isDragLeftable())) {
-					mCurrentState = STATE_DRAG;
+					setCurrentState(STATE_DRAG);
 					return true;
 				}
 			}
@@ -513,7 +535,7 @@ public class SlideMenu extends ViewGroup {
 		case MotionEvent.ACTION_MOVE:
 			if (Math.abs(x - mLastMotionX) >= mTouchSlop && isTapContent
 					&& currentState != STATE_DRAG) {
-				mCurrentState = STATE_DRAG;
+				setCurrentState(STATE_DRAG);
 			}
 			if (STATE_DRAG != currentState) {
 				return false;
@@ -619,7 +641,7 @@ public class SlideMenu extends ViewGroup {
 			}
 			break;
 		case POSITION_MIDDLE:
-			mCurrentState = STATE_CLOSE;
+			setCurrentState(STATE_CLOSE);
 			break;
 		case POSITION_RIGHT:
 			if ((velocity > 0 && velocityMatched)
@@ -642,7 +664,18 @@ public class SlideMenu extends ViewGroup {
 								currentOffset,
 								(slideDirectionFlag & FLAG_DIRECTION_LEFT) == FLAG_DIRECTION_LEFT ? mContentBoundsLeft
 										: 0));
-
+		if (null != mSlideStateChangeListener) {
+			float slideOffsetPercent = 0;
+			final int currentContentOffset = mCurrentContentOffset;
+			if (0 < currentContentOffset) {
+				slideOffsetPercent = currentContentOffset * 1.0f
+						/ mContentBoundsRight;
+			} else if (0 > currentContentOffset) {
+				slideOffsetPercent = -currentContentOffset * 1.0f
+						/ mContentBoundsLeft;
+			}
+			mSlideStateChangeListener.onSlideOffsetChange(slideOffsetPercent);
+		}
 		invalideMenuState();
 		invalidate();
 		requestLayout();
@@ -654,8 +687,8 @@ public class SlideMenu extends ViewGroup {
 			if (mScroller.computeScrollOffset()) {
 				setCurrentOffset(mScroller.getCurrX());
 			} else {
-				mCurrentState = mCurrentContentOffset == 0 ? STATE_CLOSE
-						: STATE_OPEN;
+				setCurrentState(mCurrentContentOffset == 0 ? STATE_CLOSE
+						: STATE_OPEN);
 			}
 		}
 	}
@@ -865,5 +898,25 @@ public class SlideMenu extends ViewGroup {
 				role = ((LayoutParams) layoutParams).role;
 			}
 		}
+	}
+
+	public interface OnSlideStateChangeListener {
+		/**
+		 * Invoked when slide state change
+		 * 
+		 * @param slideState
+		 *            {@link SlideMenu#STATE_CLOSE},{@link SlideMenu#STATE_OPEN}
+		 *            ,{@link SlideMenu#STATE_DRAG},
+		 *            {@link SlideMenu#STATE_SCROLL}
+		 */
+		public void onSlideStateChange(int slideState);
+
+		/**
+		 * Invoked when slide offset change
+		 * 
+		 * @param offsetPercent
+		 *            negative means slide left, otherwise slide right
+		 */
+		public void onSlideOffsetChange(float offsetPercent);
 	}
 }

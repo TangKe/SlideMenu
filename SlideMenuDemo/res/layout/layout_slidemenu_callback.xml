@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<TextView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:slidemenudemo="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/textView"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    slidemenudemo:layout_role="content"
+    android:background="#ffffff"
+    android:gravity="center"
+    android:textAppearance="?android:attr/textAppearanceLarge" />
