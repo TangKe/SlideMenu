@@ -401,19 +401,39 @@ public class SlideMenu extends ViewGroup {
 		this.mSlideDirectionFlag = slideDirectionFlag;
 	}
 
+	/**
+	 * Set the listener to listen the state change and offset change
+	 * 
+	 * @return
+	 */
 	public OnSlideStateChangeListener getOnSlideStateChangeListener() {
 		return mSlideStateChangeListener;
 	}
 
+	/**
+	 * Get the current listener
+	 * 
+	 * @param slideStateChangeListener
+	 */
 	public void setOnSlideStateChangeListener(
 			OnSlideStateChangeListener slideStateChangeListener) {
 		this.mSlideStateChangeListener = slideStateChangeListener;
 	}
 
+	/**
+	 * Get current state
+	 * 
+	 * @return
+	 */
 	public int getCurrentState() {
 		return mCurrentState;
 	}
 
+	/**
+	 * Set current state
+	 * 
+	 * @param currentState
+	 */
 	protected void setCurrentState(int currentState) {
 		if (null != mSlideStateChangeListener && currentState != mCurrentState) {
 			mSlideStateChangeListener.onSlideStateChange(currentState);
