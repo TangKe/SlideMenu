@@ -87,6 +87,9 @@ public class SlideMenuActivity extends Activity{
 Tang Ke
 tang.ke@me.com
 
+#Trello
+Please visit this [board][3] to see the plan of this repo
+
 #License
 Copyright (c) 2011-2013 Tang Ke
 
@@ -104,3 +107,4 @@ limitations under the License.
 
 [1]: http://www.github.com/TangKe/SlideMenu.git
 [2]: https://github.com/TangKe/Aretha/wiki/SlideMenu.apk
+[3]: https://trello.com/board/slidemenu/514932078a91614c640056df
