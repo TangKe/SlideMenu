@@ -23,6 +23,8 @@ import android.graphics.Rect;
 import android.graphics.drawable.Drawable;
 import android.graphics.drawable.GradientDrawable;
 import android.graphics.drawable.GradientDrawable.Orientation;
+import android.os.Parcel;
+import android.os.Parcelable;
 import android.support.v4.view.ViewPager;
 import android.util.AttributeSet;
 import android.util.TypedValue;
@@ -90,6 +92,7 @@ public class SlideMenu extends ViewGroup {
 	@ExportedProperty
 	private float mSecondaryShadowWidth;
 	private int mSlideDirectionFlag;
+	private boolean mIsPendingResolveSlideMode;
 
 	private int mSlideMode = MODE_SLIDE_CONTENT;
 
@@ -183,7 +186,7 @@ public class SlideMenu extends ViewGroup {
 		final ViewGroup contentContainer = (ViewGroup) decorView
 				.findViewById(android.R.id.content);
 		final View content = mContent;
-		if (null == decorView || null == content) {
+		if (null == decorView || null == content || 0 == getChildCount()) {
 			return;
 		}
 
@@ -338,7 +341,11 @@ public class SlideMenu extends ViewGroup {
 			return;
 		}
 		mSlideMode = slideMode;
-		resolveSlideMode();
+		if (0 == getChildCount()) {
+			mIsPendingResolveSlideMode = true;
+		} else {
+			resolveSlideMode();
+		}
 	}
 
 	/**
@@ -847,6 +854,10 @@ public class SlideMenu extends ViewGroup {
 		super.onSizeChanged(w, h, oldw, oldh);
 		mWidth = w;
 		mHeight = h;
+
+		if (mIsPendingResolveSlideMode) {
+			resolveSlideMode();
+		}
 	}
 
 	@Override
@@ -854,6 +865,80 @@ public class SlideMenu extends ViewGroup {
 			AttributeSet attrs) {
 		LayoutParams layoutParams = new LayoutParams(getContext(), attrs);
 		return layoutParams;
+	}
+
+	@Override
+	protected Parcelable onSaveInstanceState() {
+		SavedState savedState = new SavedState(super.onSaveInstanceState());
+		savedState.primaryShadowWidth = mPrimaryShadowWidth;
+		savedState.secondaryShadaryWidth = mSecondaryShadowWidth;
+		savedState.slideDirectionFlag = mSlideDirectionFlag;
+		savedState.slideMode = mSlideMode;
+		savedState.currentState = mCurrentState;
+		savedState.currentContentOffset = mCurrentContentOffset;
+		return savedState;
+	}
+
+	@Override
+	protected void onRestoreInstanceState(Parcelable state) {
+		SavedState savedState = (SavedState) state;
+		super.onRestoreInstanceState(savedState.getSuperState());
+		mPrimaryShadowWidth = savedState.primaryShadowWidth;
+		mSecondaryShadowWidth = savedState.secondaryShadaryWidth;
+		mSlideDirectionFlag = savedState.slideDirectionFlag;
+		setSlideMode(savedState.slideMode);
+		mCurrentState = savedState.currentState;
+		mCurrentContentOffset = savedState.currentContentOffset;
+
+		invalideMenuState();
+		requestLayout();
+		invalidate();
+	}
+
+	public static class SavedState extends BaseSavedState {
+		public float primaryShadowWidth;
+		public float secondaryShadaryWidth;
+		public int slideDirectionFlag;
+		public int slideMode;
+		public int currentState;
+		public int currentContentOffset;
+
+		SavedState(Parcelable superState) {
+			super(superState);
+		}
+
+		private SavedState(Parcel in) {
+			super(in);
+			primaryShadowWidth = in.readFloat();
+			secondaryShadaryWidth = in.readFloat();
+			slideDirectionFlag = in.readInt();
+			slideMode = in.readInt();
+			currentState = in.readInt();
+			currentContentOffset = in.readInt();
+		}
+
+		@Override
+		public void writeToParcel(Parcel out, int flags) {
+			super.writeToParcel(out, flags);
+			out.writeFloat(primaryShadowWidth);
+			out.writeFloat(secondaryShadaryWidth);
+			out.writeInt(slideDirectionFlag);
+			out.writeInt(slideMode);
+			out.writeInt(currentState);
+			out.writeInt(currentContentOffset);
+		}
+
+		public static final Parcelable.Creator<SavedState> CREATOR = new Parcelable.Creator<SavedState>() {
+			@Override
+			public SavedState createFromParcel(Parcel in) {
+				return new SavedState(in);
+			}
+
+			@Override
+			public SavedState[] newArray(int size) {
+				return new SavedState[size];
+			}
+		};
 	}
 
 	/**
