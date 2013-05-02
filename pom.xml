@@ -1,0 +1,59 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<groupId>com.aretha</groupId>
+	<artifactId>slidemenu</artifactId>
+	<version>1.0</version>
+	<packaging>pom</packaging>
+
+	<modules>
+		<module>SlideMenu</module>
+		<module>SlideMenuDemo</module>
+	</modules>
+
+	<build>
+		<pluginManagement>
+			<plugins>
+				<plugin>
+					<groupId>com.jayway.maven.plugins.android.generation2</groupId>
+					<artifactId>android-maven-plugin</artifactId>
+					<version>3.5.0</version>
+
+					<configuration>
+						<sdk>
+							<platform>16</platform>
+						</sdk>
+						<undeployBeforeDeploy>true</undeployBeforeDeploy>
+					</configuration>
+				</plugin>
+			</plugins>
+		</pluginManagement>
+	</build>
+	<scm>
+		<url>http://github.com/TangKe/SlideMenu.git</url>
+		<connection>scm:git:git://github.com/TangKe/SlideMenu.git</connection>
+		<developerConnection>scm:git:git@github.com:TangKe/SlideMenu.git</developerConnection>
+	</scm>
+	<issueManagement>
+		<system>GitHub Issues</system>
+		<url>https://github.com/TangKe/SlideMenu/issues</url>
+	</issueManagement>
+	<name>SlideMenu</name>
+	<description>SlideMenu is a open source android library provide slide effect to the layout and show the hidden menu behind the layout</description>
+	<url>https://github.com/TangKe/SlideMenu</url>
+	<developers>
+	    <developer>
+	        <name>Tang Ke</name>
+	        <email>tang.ke@me.com</email>
+	        <id>tangke</id>
+	        <timezone>+8</timezone>
+	    </developer>
+	</developers>
+	<licenses>
+		<license>
+			<name>The Apache Software License, Version 2.0</name>
+			<url>http://www.apache.org/licenses/LICENSE-2.0.txt</url>
+			<distribution>repo</distribution>
+		</license>
+	</licenses>
+</project>
