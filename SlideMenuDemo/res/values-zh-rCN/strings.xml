@@ -15,7 +15,7 @@
     <string name="slidemenu_with_view_pager">包含ViewPager的SlideMenu</string>
     <string name="slidemenu_with_web_view">包含WebView的SlideMenu</string>
     <string name="slidemenu_callback">SlideMenu的回调</string>
-    <string name="slidemenu_state">状态: %1$s, 偏移比例: %2$s</string>
+    <string name="slidemenu_state">状态: \n%1$s\n偏移比例: \n%2$s</string>
     <string name="slidemenu_state_close">关闭</string>
     <string name="slidemenu_state_open">打开</string>
     <string name="slidemenu_state_drag">拖动</string>

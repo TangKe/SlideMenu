@@ -1,5 +1,6 @@
 package com.aretha.slidemenudemo.activity;
 
+import android.os.Bundle;
 import android.widget.TextView;
 
 import com.aretha.slidemenu.SlideMenu;
@@ -9,6 +10,9 @@ import com.aretha.slidemenudemo.R;
 
 public class SlideMenuCallbackActivity extends BaseSlideMenuActivity implements
 		OnSlideStateChangeListener {
+	private final static String OFFSET_PERCENT = "OffsetPercent";
+	private final static String SLIDE_STATE = "SlideState";
+
 	private int mSlideState;
 	private float mOffsetPercent;
 	private TextView mTextView;
@@ -35,6 +39,21 @@ public class SlideMenuCallbackActivity extends BaseSlideMenuActivity implements
 	public void onSlideOffsetChange(float offsetPercent) {
 		mOffsetPercent = offsetPercent;
 		updateText();
+	}
+	
+	@Override
+	protected void onRestoreInstanceState(Bundle savedInstanceState) {
+		super.onRestoreInstanceState(savedInstanceState);
+		mOffsetPercent = savedInstanceState.getFloat(OFFSET_PERCENT);
+		mSlideState = savedInstanceState.getInt(SLIDE_STATE);
+		updateText();
+	}
+
+	@Override
+	protected void onSaveInstanceState(Bundle outState) {
+		super.onSaveInstanceState(outState);
+		outState.putFloat(OFFSET_PERCENT, mOffsetPercent);
+		outState.putInt(SLIDE_STATE, mSlideState);
 	}
 
 	private void updateText() {
