@@ -560,11 +560,12 @@ public class SlideMenu extends ViewGroup {
 			mVelocityTracker = VelocityTracker.obtain();
 			break;
 		case MotionEvent.ACTION_MOVE:
-			if (Math.abs(x - mLastMotionX) >= mTouchSlop && isTapContent
+			if (Math.abs(x - mPressedX) >= mTouchSlop && isTapContent
 					&& currentState != STATE_DRAG) {
 				setCurrentState(STATE_DRAG);
 			}
 			if (STATE_DRAG != currentState) {
+				mLastMotionX = x;
 				return false;
 			}
 
@@ -577,10 +578,10 @@ public class SlideMenu extends ViewGroup {
 			if (STATE_DRAG == currentState) {
 				mVelocityTracker.computeCurrentVelocity(1000);
 				endDrag(x, mVelocityTracker.getXVelocity());
-				mVelocityTracker.clear();
 			} else if (isTapContent) {
 				performContentClick();
 			}
+			mVelocityTracker.recycle();
 			mIsTapContent = false;
 			break;
 		}
@@ -878,7 +879,7 @@ public class SlideMenu extends ViewGroup {
 		savedState.currentContentOffset = mCurrentContentOffset;
 		return savedState;
 	}
-
+	
 	@Override
 	protected void onRestoreInstanceState(Parcelable state) {
 		SavedState savedState = (SavedState) state;
