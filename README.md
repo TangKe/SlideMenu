@@ -91,7 +91,6 @@ tang.ke@me.com
 Please visit this [board][3] to see the plan of this repo
 
 #License
--------
     Copyright (c) 2011-2013 Tang Ke
     
     Licensed under the Apache License, Version 2.0 (the "License");
