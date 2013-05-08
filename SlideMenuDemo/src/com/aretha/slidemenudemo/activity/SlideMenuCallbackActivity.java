@@ -40,7 +40,7 @@ public class SlideMenuCallbackActivity extends BaseSlideMenuActivity implements
 		mOffsetPercent = offsetPercent;
 		updateText();
 	}
-	
+
 	@Override
 	protected void onRestoreInstanceState(Bundle savedInstanceState) {
 		super.onRestoreInstanceState(savedInstanceState);
@@ -63,7 +63,8 @@ public class SlideMenuCallbackActivity extends BaseSlideMenuActivity implements
 		case SlideMenu.STATE_CLOSE:
 			slideStateRes = R.string.slidemenu_state_close;
 			break;
-		case SlideMenu.STATE_OPEN:
+		case SlideMenu.STATE_OPEN_LEFT:
+		case SlideMenu.STATE_OPEN_RIGHT:
 			slideStateRes = R.string.slidemenu_state_open;
 			break;
 		case SlideMenu.STATE_DRAG:

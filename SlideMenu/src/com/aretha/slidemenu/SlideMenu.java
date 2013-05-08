@@ -28,6 +28,7 @@ import android.os.Parcelable;
 import android.support.v4.view.ViewPager;
 import android.util.AttributeSet;
 import android.util.TypedValue;
+import android.view.KeyEvent;
 import android.view.MotionEvent;
 import android.view.VelocityTracker;
 import android.view.View;
@@ -54,10 +55,12 @@ public class SlideMenu extends ViewGroup {
 	public final static int MODE_SLIDE_WINDOW = 1;
 	public final static int MODE_SLIDE_CONTENT = 2;
 
-	public final static int STATE_CLOSE = 0;
-	public final static int STATE_OPEN = 1;
-	public final static int STATE_DRAG = 2;
-	public final static int STATE_SCROLL = 3;
+	public final static int STATE_CLOSE = 1 << 0;
+	public final static int STATE_OPEN_LEFT = 1 << 1;
+	public final static int STATE_OPEN_RIGHT = 1 << 2;
+	public final static int STATE_DRAG = 1 << 3;
+	public final static int STATE_SCROLL = 1 << 4;
+	public final static int STATE_OPEN_MASK = 6;
 
 	private final static int POSITION_LEFT = -1;
 	private final static int POSITION_MIDDLE = 0;
@@ -150,7 +153,8 @@ public class SlideMenu extends ViewGroup {
 
 		mSlideDirectionFlag = a.getInt(R.styleable.SlideMenu_slideDirection,
 				FLAG_DIRECTION_LEFT | FLAG_DIRECTION_RIGHT);
-
+		setFocusable(true);
+		setFocusableInTouchMode(true);
 		a.recycle();
 	}
 
@@ -349,13 +353,22 @@ public class SlideMenu extends ViewGroup {
 	}
 
 	/**
+	 * Indicate this SlideMenu is open
+	 * 
+	 * @return true open, otherwise false
+	 */
+	public boolean isOpen() {
+		return (STATE_OPEN_MASK & mCurrentState) != 0;
+	}
+
+	/**
 	 * Open the SlideMenu
 	 * 
 	 * @param isSlideLeft
 	 * @param isAnimated
 	 */
 	public void open(boolean isSlideLeft, boolean isAnimated) {
-		if (STATE_OPEN == mCurrentState) {
+		if (isOpen()) {
 			return;
 		}
 
@@ -519,7 +532,7 @@ public class SlideMenu extends ViewGroup {
 		case MotionEvent.ACTION_DOWN:
 			mPressedX = mLastMotionX = x;
 			mIsTapContent = isTapContent(x, y);
-			return STATE_OPEN == currentState && mIsTapContent;
+			return isOpen() && mIsTapContent;
 		case MotionEvent.ACTION_MOVE:
 			float distance = x - mPressedX;
 			if (Math.abs(distance) >= mTouchSlop && mIsTapContent) {
@@ -589,6 +602,40 @@ public class SlideMenu extends ViewGroup {
 		return true;
 	}
 
+	@Override
+	public boolean dispatchKeyEvent(KeyEvent event) {
+		if (KeyEvent.ACTION_UP == event.getAction()) {
+			final boolean isOpen = isOpen();
+			switch (event.getKeyCode()) {
+			case KeyEvent.KEYCODE_BACK:
+				if (isOpen) {
+					close(true);
+					return true;
+				}
+				break;
+			case KeyEvent.KEYCODE_DPAD_LEFT:
+				if (STATE_OPEN_LEFT == mCurrentState) {
+					close(true);
+					return true;
+				} else if (!isOpen) {
+					open(true, true);
+					return true;
+				}
+				break;
+			case KeyEvent.KEYCODE_DPAD_RIGHT:
+				if (STATE_OPEN_RIGHT == mCurrentState) {
+					close(true);
+					return true;
+				} else if (!isOpen) {
+					open(false, true);
+					return true;
+				}
+				break;
+			}
+		}
+		return super.dispatchKeyEvent(event);
+	}
+
 	/**
 	 * Get current primary menu
 	 * 
@@ -611,7 +658,7 @@ public class SlideMenu extends ViewGroup {
 	 * Perform click on the content
 	 */
 	public void performContentClick() {
-		if (STATE_OPEN == mCurrentState) {
+		if (isOpen()) {
 			smoothScrollContentTo(0);
 		}
 	}
@@ -711,12 +758,13 @@ public class SlideMenu extends ViewGroup {
 
 	@Override
 	public void computeScroll() {
-		if (STATE_SCROLL == mCurrentState || STATE_OPEN == mCurrentState) {
+		if (STATE_SCROLL == mCurrentState || isOpen()) {
 			if (mScroller.computeScrollOffset()) {
 				setCurrentOffset(mScroller.getCurrX());
 			} else {
 				setCurrentState(mCurrentContentOffset == 0 ? STATE_CLOSE
-						: STATE_OPEN);
+						: (mCurrentContentOffset > 0 ? STATE_OPEN_LEFT
+								: STATE_OPEN_RIGHT));
 			}
 		}
 	}
@@ -879,7 +927,7 @@ public class SlideMenu extends ViewGroup {
 		savedState.currentContentOffset = mCurrentContentOffset;
 		return savedState;
 	}
-	
+
 	@Override
 	protected void onRestoreInstanceState(Parcelable state) {
 		SavedState savedState = (SavedState) state;
