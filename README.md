@@ -60,17 +60,17 @@ public class SlideMenuActivity extends Activity{
     <View
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_role="content" />
+        slidemenudemo:layout_role="content" />
 
     <View
         android:layout_width="200dip"
         android:layout_height="match_parent"
-        android:layout_role="primaryMenu" />
+        slidemenudemo:layout_role="primaryMenu" />
 
     <View
         android:layout_width="300dip"
         android:layout_height="match_parent"
-        android:layout_role="secondaryMenu" />
+        slidemenudemo:layout_role="secondaryMenu" />
 
 </com.aretha.slidemenu.SlideMenu>
 ```
