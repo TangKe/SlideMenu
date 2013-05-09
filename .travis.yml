@@ -8,6 +8,6 @@ before_install:
   - cd android-sdk-linux
   - export ANDROID_HOME=$(pwd)
   - export PATH=${PATH}:${ANDROID_HOME}/tools:${ANDROID_HOME}/platform-tools
-  - android update sdk --filter "platform-tool" --no-ui --force && ls && adb && aapt
+  - android update sdk --filter "platform-tool" --no-ui --force && cd platform-tools && ls && cd .. && adb && aapt
   - SDK=$(android list sdk --no-ui | grep ", API 16," | cut -d"-" -f1)
   - android update sdk --filter "$SDK" --no-ui --force
