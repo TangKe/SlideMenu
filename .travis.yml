@@ -3,11 +3,11 @@ branches:
   excludes:
     - develop
 before_install:
+  - uname -a
+  - sudo pip apt-get install ia32-libs
   - wget http://dl.google.com/android/android-sdk_r21.1-linux.tgz 
   - tar -zxf android-sdk_r21.1-linux.tgz
-  - cd android-sdk-linux
-  - export ANDROID_HOME=$(pwd)
-  - export PATH=${PATH}:${ANDROID_HOME}/tools
+  - export ANDROID_HOME='pwd'/android-sdk-linux
+  - export PATH=${PATH}:${ANDROID_HOME}/tools:${ANDROID_HOME}/platform-tools
   - android update sdk --filter platform-tool,android-16 --no-ui --force
-  - export PATH=${PATH}:${ANDROID_HOME}/platform-tools
   - adb
