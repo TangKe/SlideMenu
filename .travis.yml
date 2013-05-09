@@ -8,7 +8,10 @@ before_install:
   - cd android-sdk-linux
   - export ANDROID_HOME=$(pwd)
   - export PATH=${PATH}:${ANDROID_HOME}/tools:${ANDROID_HOME}/platform-tools
-  - android update sdk --filter tools,platform-tools,android-16,addon-google_apis-google-16,extra-android-support,extra-google-admob_ads_sdk,extra-google-analytics_sdk,extra-google-gcm,extra-google-play_apk_expansion,extra-google-play_billing,extra-google-play_licensing --no-ui --force --no-https -a
+  - TOOLS=$(android list sdk --no-ui | grep "Android SDK Platform-tools" | cut -d"-" -f1
+  - android update sdk --filter "$TOOLS" --no-ui --force
+  - SDK=$(android list sdk --no-ui | grep ", API 16," | cut -d"-" -f1)
+  - android update sdk --filter "$SDK" --no-ui --force
   - cd ..
   - ls
 script:
