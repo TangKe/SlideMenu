@@ -16,7 +16,6 @@ gen/
 local.properties
 
 # Eclipse project files
-*/bin
-*/gen
-*/.settings
-*/lint.xml
+.settings/
+lint.xml
+target/
