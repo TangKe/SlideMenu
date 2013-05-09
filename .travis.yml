@@ -1,4 +1,7 @@
 language: java
+branches:
+  excludes:
+    - develop
 before_install:
   - wget http://dl.google.com/android/android-sdk_r21-linux.tgz
   - tar -zxf android-sdk_r21-linux.tgz
