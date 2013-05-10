@@ -1,6 +1,6 @@
 language: java
 branches:
-  excludes:
+  except:
     - develop
 before_install:
   - sudo apt-get update -qq
