@@ -1,7 +1,6 @@
-SlideMenu([Demo][2])
+SlideMenu([Demo][2]) <img src="https://api.travis-ci.org/TangKe/SlideMenu.png?branch=master" />
 =========
 SlideMenu is a open source android library provide slide effect to the layout and show the hidden menu behind the layout
-Continuous Integration provided by [Travis CI][4]<img src="https://api.travis-ci.org/TangKe/SlideMenu.png?branch=master" />
 
 <img src="https://github.com/TangKe/SlideMenu/wiki/images/snap1.png" width="150" />
 <img src="https://github.com/TangKe/SlideMenu/wiki/images/snap2.png" width="150" />
