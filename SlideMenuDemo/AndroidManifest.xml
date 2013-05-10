@@ -1,7 +1,7 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.aretha.slidemenudemo"
-    android:versionCode="2"
-    android:versionName="1.0" >
+    android:versionCode="3"
+    android:versionName="1.0.1" >
 
     <uses-sdk
         android:minSdkVersion="8"
@@ -52,6 +52,13 @@
         <activity
             android:name=".activity.SlideMenuWithWebView"
             android:label="@string/slidemenu_with_web_view" >
+            <intent-filter>
+                <action android:name="com.aretha.demobundle.DEMO" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".activity.SlideMenuWithHorizontalScrollViewAndViewPager"
+            android:label="@string/slidemenu_with_horizontal_scroll_view_and_view_pager" >
             <intent-filter>
                 <action android:name="com.aretha.demobundle.DEMO" />
             </intent-filter>

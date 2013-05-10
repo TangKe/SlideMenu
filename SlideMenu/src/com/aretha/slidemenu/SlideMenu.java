@@ -25,6 +25,7 @@ import android.graphics.drawable.GradientDrawable;
 import android.graphics.drawable.GradientDrawable.Orientation;
 import android.os.Parcel;
 import android.os.Parcelable;
+import android.support.v4.view.ViewCompat;
 import android.support.v4.view.ViewPager;
 import android.util.AttributeSet;
 import android.util.TypedValue;
@@ -68,7 +69,7 @@ public class SlideMenu extends ViewGroup {
 	private int mCurrentContentPosition;
 	private int mCurrentState;
 
-	private DragDetector mDragDetector;
+	private ScrollDetector mScrollDetector;
 
 	private View mContent;
 	private View mPrimaryMenu;
@@ -492,23 +493,23 @@ public class SlideMenu extends ViewGroup {
 	}
 
 	/**
-	 * Get current {@link DragDetector}
+	 * Get current {@link ScrollDetector}
 	 * 
 	 * @return
 	 */
-	public DragDetector getDragDetector() {
-		return mDragDetector;
+	public ScrollDetector getScrollDetector() {
+		return mScrollDetector;
 	}
 
 	/**
-	 * Set a {@link DragDetector} to detect whether dragable left/right, this is
+	 * Set a {@link ScrollDetector} to detect whether dragable left/right, this is
 	 * useful for content with {@link ViewPager}, {@link HorizontalScrollView}
 	 * inside
 	 * 
-	 * @param dragDetector
+	 * @param scrollDetector
 	 */
-	public void setDragDetector(DragDetector dragDetector) {
-		this.mDragDetector = dragDetector;
+	public void setScrollDetector(ScrollDetector scrollDetector) {
+		this.mScrollDetector = scrollDetector;
 	}
 
 	private boolean isTapContent(float x, float y) {
@@ -536,14 +537,7 @@ public class SlideMenu extends ViewGroup {
 		case MotionEvent.ACTION_MOVE:
 			float distance = x - mPressedX;
 			if (Math.abs(distance) >= mTouchSlop && mIsTapContent) {
-				DragDetector dragDetector = mDragDetector;
-				if (null == dragDetector) {
-					setCurrentState(STATE_DRAG);
-					return true;
-				}
-
-				if ((distance > 0 && dragDetector.isDragRightable())
-						|| (distance < 0 && dragDetector.isDragLeftable())) {
+				if (!canScroll(this, (int) distance, (int) x, (int) y)) {
 					setCurrentState(STATE_DRAG);
 					return true;
 				}
@@ -856,6 +850,36 @@ public class SlideMenu extends ViewGroup {
 				continue;
 			}
 		}
+	}
+
+	protected final boolean canScroll(View v, int dx, int x, int y) {
+		if (null == mScrollDetector) {
+			return false;
+		}
+
+		if (v instanceof ViewGroup) {
+			final ViewGroup viewGroup = (ViewGroup) v;
+			final int scrollX = v.getScrollX();
+			final int scrollY = v.getScrollY();
+
+			final int childCount = viewGroup.getChildCount();
+			for (int index = 0; index < childCount; index++) {
+				View child = viewGroup.getChildAt(index);
+				final int left = child.getLeft();
+				final int top = child.getTop();
+				if (x + scrollX >= left
+						&& x + scrollX < child.getRight()
+						&& y + scrollY >= top
+						&& y + scrollY < child.getBottom()
+						&& (mScrollDetector.isScrollable(child, dx, x + scrollX
+								- left, y + scrollY - top) || canScroll(child,
+								dx, x + scrollX - left, y + scrollY - top))) {
+					return true;
+				}
+			}
+		}
+
+		return ViewCompat.canScrollHorizontally(v, -dx);
 	}
 
 	public float getPrimaryShadowWidth() {

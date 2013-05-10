@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+
     <string name="app_name">SlideMenu演示</string>
     <string name="primary_shadow_width">左边阴影宽度</string>
     <string name="secondary_shadow_width">右边阴影宽度</string>
@@ -14,6 +15,7 @@
     <string name="slidemenu_with_horizontal_scroll_view">包含HorizontalScrollView的SlideMenu</string>
     <string name="slidemenu_with_view_pager">包含ViewPager的SlideMenu</string>
     <string name="slidemenu_with_web_view">包含WebView的SlideMenu</string>
+    <string name="slidemenu_with_horizontal_scroll_view_and_view_pager">包含HorizontalScrollView和ViewPager的SlideMenu</string>
     <string name="slidemenu_callback">SlideMenu的回调</string>
     <string name="slidemenu_state">状态: \n%1$s\n偏移比例: \n%2$s</string>
     <string name="slidemenu_state_close">关闭</string>
@@ -24,4 +26,5 @@
 Google通过官方网上商店平台Google Play，提供应用程序和游戏供用户下载，截止至2012年6月，Google Play商店拥有超过60万个官方认证应用程序[12][13]。同时用户亦可以通过第三方网站来下载。</string>
     <string name="open">打开</string>
     <string name="close">关闭</string>
+
 </resources>

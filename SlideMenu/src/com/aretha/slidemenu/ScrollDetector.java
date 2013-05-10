@@ -15,6 +15,7 @@
 package com.aretha.slidemenu;
 
 import android.view.MotionEvent;
+import android.view.View;
 
 /**
  * A helper interface to tell {@link SlideMenu} should/shouldn't intercept
@@ -25,8 +26,20 @@ import android.view.MotionEvent;
  * @author Tank
  * 
  */
-public interface DragDetector {
-	public boolean isDragLeftable();
-
-	public boolean isDragRightable();
+public interface ScrollDetector {
+	/**
+	 * This method will invoke many times unless return true or no view can
+	 * scroll
+	 * 
+	 * @param v
+	 *            all of children inside SlideMenu which contain the touch point
+	 * @param dx
+	 *            the changes of x
+	 * @param x
+	 *            x coordinate relative to the v(first parameter)'s parent
+	 * @param y
+	 *            y coordinate relative to the v(first parameter)'s parent
+	 * @return
+	 */
+	public boolean isScrollable(View v, float dx, float x, float y);
 }

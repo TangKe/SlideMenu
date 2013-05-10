@@ -14,6 +14,7 @@
     <string name="slidemenu_with_horizontal_scroll_view">SlideMenu With HorizontalScrollView</string>
     <string name="slidemenu_with_view_pager">SlideMenu With ViewPager</string>
     <string name="slidemenu_with_web_view">SlideMenu With WebView</string>
+    <string name="slidemenu_with_horizontal_scroll_view_and_view_pager">SlideMenu With HorizontalScrollView And ViewPager</string>
     <string name="slidemenu_callback">SlideMenu Callback</string>
     <string name="slidemenu_state">State: \n%1$s\nOffset: \n%2$s</string>
     <string name="slidemenu_state_close">Close</string>
