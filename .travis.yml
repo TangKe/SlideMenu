@@ -1,4 +1,6 @@
 language: java
+notifications:
+  email: false
 branches:
   except:
     - develop
