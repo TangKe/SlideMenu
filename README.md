@@ -1,12 +1,13 @@
 SlideMenu([Demo][2])
 =========
 SlideMenu is a open source android library provide slide effect to the layout and show the hidden menu behind the layout
+Continuous Integration provided by [Travis CI][4]<img src="https://api.travis-ci.org/TangKe/SlideMenu.png?branch=master" />
 
-<img src="https://github.com/TangKe/SlideMenu/wiki/images/snap1.png" width="150">
-<img src="https://github.com/TangKe/SlideMenu/wiki/images/snap2.png" width="150">
-<img src="https://github.com/TangKe/SlideMenu/wiki/images/snap3.png" width="150">
-<img src="https://github.com/TangKe/SlideMenu/wiki/images/snap4.png" width="150">
-<img src="https://github.com/TangKe/SlideMenu/wiki/images/snap5.png" width="150">
+<img src="https://github.com/TangKe/SlideMenu/wiki/images/snap1.png" width="150" />
+<img src="https://github.com/TangKe/SlideMenu/wiki/images/snap2.png" width="150" />
+<img src="https://github.com/TangKe/SlideMenu/wiki/images/snap3.png" width="150" />
+<img src="https://github.com/TangKe/SlideMenu/wiki/images/snap4.png" width="150" />
+<img src="https://github.com/TangKe/SlideMenu/wiki/images/snap5.png" width="150" />
 
 #Setup
 To enable fantasitic feature in your project with the following simple steps:
@@ -106,3 +107,4 @@ Please visit this [board][3] to see the plan of this repo
 [1]: http://www.github.com/TangKe/SlideMenu.git
 [2]: https://github.com/TangKe/Aretha/wiki/SlideMenu.apk
 [3]: https://trello.com/board/slidemenu/514932078a91614c640056df
+[4]: https://travis-ci.org/TangKe/SlideMenu
