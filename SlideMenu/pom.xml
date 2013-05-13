@@ -1,8 +1,10 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
+	<name>SlideMenuLibrary</name>
 	<groupId>com.aretha</groupId>
 	<artifactId>slidemenu-library</artifactId>
+	<version>1.0-SNAPSHOT</version>
 	<packaging>apklib</packaging>
 	<build>
 		<sourceDirectory>src</sourceDirectory>
@@ -25,7 +27,6 @@
 			</plugin>
 		</plugins>
 	</build>
-	<version>1.0-SNAPSHOT</version>
 	<dependencies>
 		<dependency>
 			<groupId>com.google.android</groupId>
@@ -39,5 +40,4 @@
 			<version>r7</version>
 		</dependency>
 	</dependencies>
-	<name>SlideMenuLibrary</name>
 </project>
