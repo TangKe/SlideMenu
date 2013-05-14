@@ -34,7 +34,8 @@ public interface ScrollDetector {
 	 * @param v
 	 *            all of children inside SlideMenu which contain the touch point
 	 * @param dx
-	 *            the changes of x
+	 *            the changes of x, > 0 means scroll right, < 0 means scroll
+	 *            left
 	 * @param x
 	 *            x coordinate relative to the v(first parameter)'s parent
 	 * @param y

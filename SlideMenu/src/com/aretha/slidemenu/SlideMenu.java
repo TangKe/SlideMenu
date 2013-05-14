@@ -41,7 +41,8 @@ import android.widget.HorizontalScrollView;
 import android.widget.Scroller;
 
 /**
- * User can swipe left/right to show the hide menu
+ * Swipe left/right to show the hidden menu behind the content view, Use
+ * {@link ScrollDetector} to custom the rule of MotionEvent intercept
  * 
  * @author Tank
  * 
@@ -502,9 +503,9 @@ public class SlideMenu extends ViewGroup {
 	}
 
 	/**
-	 * Set a {@link ScrollDetector} to detect whether dragable left/right, this is
-	 * useful for content with {@link ViewPager}, {@link HorizontalScrollView}
-	 * inside
+	 * Set a {@link ScrollDetector} to detect whether dragable left/right, this
+	 * is useful for content with {@link ViewPager},
+	 * {@link HorizontalScrollView} inside
 	 * 
 	 * @param scrollDetector
 	 */
