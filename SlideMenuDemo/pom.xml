@@ -49,7 +49,7 @@
 	<parent>
 		<artifactId>slidemenu</artifactId>
 		<groupId>com.aretha</groupId>
-		<version>1.0</version>
+		<version>1.0-SNAPSHOT</version>
 		<relativePath>../pom.xml</relativePath>
 	</parent>
 </project>
