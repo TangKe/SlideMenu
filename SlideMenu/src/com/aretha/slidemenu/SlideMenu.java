@@ -872,6 +872,7 @@ public class SlideMenu extends ViewGroup {
 						&& x + scrollX < child.getRight()
 						&& y + scrollY >= top
 						&& y + scrollY < child.getBottom()
+						&& View.VISIBLE == child.getVisibility()
 						&& (mScrollDetector.isScrollable(child, dx, x + scrollX
 								- left, y + scrollY - top) || canScroll(child,
 								dx, x + scrollX - left, y + scrollY - top))) {
