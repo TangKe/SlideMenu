@@ -260,17 +260,22 @@ public class SlideMenu extends ViewGroup {
 		LayoutParams layoutParams = (LayoutParams) params;
 		switch (layoutParams.role) {
 		case LayoutParams.ROLE_CONTENT:
+			removeView(mContent);
 			mContent = child;
 			break;
 		case LayoutParams.ROLE_PRIMARY_MENU:
+			removeView(mPrimaryMenu);
 			mPrimaryMenu = child;
 			break;
 		case LayoutParams.ROLE_SECONDARY_MENU:
+			removeView(mSecondaryMenu);
 			mSecondaryMenu = child;
 			break;
 		default:
+			// We will ignore the view without attribute layout_role
 			return;
 		}
+		invalidateMenuState();
 		super.addView(child, index, params);
 	}
 
@@ -663,7 +668,7 @@ public class SlideMenu extends ViewGroup {
 		setCurrentOffset(mCurrentContentOffset);
 	}
 
-	private void invalideMenuState() {
+	private void invalidateMenuState() {
 		mCurrentContentPosition = mCurrentContentOffset < 0 ? POSITION_LEFT
 				: (mCurrentContentOffset == 0 ? POSITION_MIDDLE
 						: POSITION_RIGHT);
@@ -746,7 +751,7 @@ public class SlideMenu extends ViewGroup {
 			}
 			mSlideStateChangeListener.onSlideOffsetChange(slideOffsetPercent);
 		}
-		invalideMenuState();
+		invalidateMenuState();
 		invalidate();
 		requestLayout();
 	}
@@ -853,6 +858,9 @@ public class SlideMenu extends ViewGroup {
 		}
 	}
 
+	/**
+	 * Detect whether the views inside content are slidable
+	 */
 	protected final boolean canScroll(View v, int dx, int x, int y) {
 		if (null == mScrollDetector) {
 			return false;
@@ -965,7 +973,7 @@ public class SlideMenu extends ViewGroup {
 		mCurrentState = savedState.currentState;
 		mCurrentContentOffset = savedState.currentContentOffset;
 
-		invalideMenuState();
+		invalidateMenuState();
 		requestLayout();
 		invalidate();
 	}
