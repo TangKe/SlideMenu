@@ -26,7 +26,6 @@ import android.graphics.drawable.GradientDrawable.Orientation;
 import android.os.Parcel;
 import android.os.Parcelable;
 import android.support.v4.view.ViewCompat;
-import android.support.v4.view.ViewPager;
 import android.util.AttributeSet;
 import android.util.TypedValue;
 import android.view.KeyEvent;
@@ -37,8 +36,9 @@ import android.view.ViewConfiguration;
 import android.view.ViewDebug.ExportedProperty;
 import android.view.ViewGroup;
 import android.view.animation.Interpolator;
-import android.widget.HorizontalScrollView;
 import android.widget.Scroller;
+
+import com.aretha.slidemenu.utils.ScrollDetectors;
 
 /**
  * Swipe left/right to show the hidden menu behind the content view, Use
@@ -69,8 +69,6 @@ public class SlideMenu extends ViewGroup {
 	private final static int POSITION_RIGHT = 1;
 	private int mCurrentContentPosition;
 	private int mCurrentState;
-
-	private ScrollDetector mScrollDetector;
 
 	private View mContent;
 	private View mPrimaryMenu;
@@ -498,26 +496,6 @@ public class SlideMenu extends ViewGroup {
 		invalidate();
 	}
 
-	/**
-	 * Get current {@link ScrollDetector}
-	 * 
-	 * @return
-	 */
-	public ScrollDetector getScrollDetector() {
-		return mScrollDetector;
-	}
-
-	/**
-	 * Set a {@link ScrollDetector} to detect whether dragable left/right, this
-	 * is useful for content with {@link ViewPager},
-	 * {@link HorizontalScrollView} inside
-	 * 
-	 * @param scrollDetector
-	 */
-	public void setScrollDetector(ScrollDetector scrollDetector) {
-		this.mScrollDetector = scrollDetector;
-	}
-
 	private boolean isTapContent(float x, float y) {
 		final View content = mContent;
 		if (null != content) {
@@ -862,10 +840,6 @@ public class SlideMenu extends ViewGroup {
 	 * Detect whether the views inside content are slidable
 	 */
 	protected final boolean canScroll(View v, int dx, int x, int y) {
-		if (null == mScrollDetector) {
-			return false;
-		}
-
 		if (v instanceof ViewGroup) {
 			final ViewGroup viewGroup = (ViewGroup) v;
 			final int scrollX = v.getScrollX();
@@ -881,9 +855,9 @@ public class SlideMenu extends ViewGroup {
 						&& y + scrollY >= top
 						&& y + scrollY < child.getBottom()
 						&& View.VISIBLE == child.getVisibility()
-						&& (mScrollDetector.isScrollable(child, dx, x + scrollX
-								- left, y + scrollY - top) || canScroll(child,
-								dx, x + scrollX - left, y + scrollY - top))) {
+						&& (ScrollDetectors.canScrollHorizontal(child, dx) || canScroll(
+								child, dx, x + scrollX - left, y + scrollY
+										- top))) {
 					return true;
 				}
 			}
