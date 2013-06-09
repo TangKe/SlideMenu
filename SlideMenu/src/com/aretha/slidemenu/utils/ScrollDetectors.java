@@ -10,29 +10,51 @@ import android.view.View;
 import android.webkit.WebView;
 import android.widget.HorizontalScrollView;
 
+/**
+ * Provide base implements of {@link ViewPager}, {@link HorizontalScrollView},
+ * {@link WebView} scroll detect, You can use {@link ScrollDetectorFactory} to
+ * add your own implements of {@link ScrollDetector}
+ * 
+ * @author Tank
+ * 
+ */
 public class ScrollDetectors {
-	private static final WeakHashMap<Class<?>, IScrollDetector> IMPLES = new WeakHashMap<Class<?>, IScrollDetector>();
+	private static final WeakHashMap<Class<?>, ScrollDetector> IMPLES = new WeakHashMap<Class<?>, ScrollDetector>();
 	private static ScrollDetectorFactory mFactory;
 
+	/**
+	 * Check the view is horizontal scrollable
+	 * 
+	 * @param v
+	 * @param direction
+	 * @return
+	 */
 	public static boolean canScrollHorizontal(View v, int direction) {
-		IScrollDetector imples = getImplements(v);
+		ScrollDetector imples = getImplements(v);
 		if (null == imples) {
 			return false;
 		}
 		return imples.canScrollHorizontal(v, direction);
 	}
 
+	/**
+	 * Check the view is vertical scrollable
+	 * 
+	 * @param v
+	 * @param direction
+	 * @return
+	 */
 	public static boolean canScrollVertical(View v, int direction) {
-		IScrollDetector imples = getImplements(v);
+		ScrollDetector imples = getImplements(v);
 		if (null == imples) {
 			return false;
 		}
 		return imples.canScrollVertical(v, direction);
 	}
 
-	private static IScrollDetector getImplements(View v) {
+	private static ScrollDetector getImplements(View v) {
 		Class<?> clazz = v.getClass();
-		IScrollDetector imple = IMPLES.get(clazz);
+		ScrollDetector imple = IMPLES.get(clazz);
 
 		if (null != imple) {
 			return imple;
@@ -54,7 +76,13 @@ public class ScrollDetectors {
 		return imple;
 	}
 
-	private static class ViewPagerScrollDetector implements IScrollDetector {
+	/**
+	 * Base implements of {@link ScrollDetector} for {@link ViewPager}
+	 * 
+	 * @author Tank
+	 * 
+	 */
+	private static class ViewPagerScrollDetector implements ScrollDetector {
 
 		@Override
 		public boolean canScrollHorizontal(View v, int direction) {
@@ -77,7 +105,13 @@ public class ScrollDetectors {
 
 	}
 
-	private static class WebViewScrollDetector implements IScrollDetector {
+	/**
+	 * Base implements of {@link ScrollDetector} for {@link WebView}
+	 * 
+	 * @author Tank
+	 * 
+	 */
+	private static class WebViewScrollDetector implements ScrollDetector {
 
 		@Override
 		public boolean canScrollHorizontal(View v, int direction) {
@@ -118,8 +152,15 @@ public class ScrollDetectors {
 
 	}
 
+	/**
+	 * Base implements of {@link ScrollDetector} for
+	 * {@link HorizontalScrollView}
+	 * 
+	 * @author Tank
+	 * 
+	 */
 	private static class HorizontalScrollViewScrollDetector implements
-			IScrollDetector {
+			ScrollDetector {
 
 		@Override
 		public boolean canScrollHorizontal(View v, int direction) {
@@ -153,7 +194,12 @@ public class ScrollDetectors {
 		mFactory = factory;
 	}
 
-	public interface IScrollDetector {
+	/**
+	 * 
+	 * @author Tank
+	 * 
+	 */
+	public interface ScrollDetector {
 		public boolean canScrollHorizontal(View v, int direction);
 
 		public boolean canScrollVertical(View v, int direction);

@@ -2,8 +2,8 @@ package com.aretha.slidemenu.utils;
 
 import android.view.View;
 
-import com.aretha.slidemenu.utils.ScrollDetectors.IScrollDetector;
+import com.aretha.slidemenu.utils.ScrollDetectors.ScrollDetector;
 
 public interface ScrollDetectorFactory {
-	public IScrollDetector newScrollDetector(View v);
+	public ScrollDetector newScrollDetector(View v);
 }
