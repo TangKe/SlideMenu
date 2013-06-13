@@ -1,4 +1,4 @@
-# built application files
+#built application files
 *.apk
 *.ap_
 
@@ -19,3 +19,5 @@ local.properties
 .settings/
 lint.xml
 target/
+.project
+.classpath
