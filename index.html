@@ -1,0 +1,172 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+    <title>Slidemenu by TangKe</title>
+    <link rel="stylesheet" href="stylesheets/styles.css">
+    <link rel="stylesheet" href="stylesheets/pygment_trac.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+    <script src="javascripts/respond.js"></script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <!--[if lt IE 8]>
+    <link rel="stylesheet" href="stylesheets/ie.css">
+    <![endif]-->
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+
+  </head>
+  <body>
+      <div id="header">
+        <nav>
+          <li class="fork"><a href="https://github.com/TangKe/SlideMenu">View On GitHub</a></li>
+          <li class="downloads"><a href="https://github.com/TangKe/SlideMenu/zipball/master">ZIP</a></li>
+          <li class="downloads"><a href="https://github.com/TangKe/SlideMenu/tarball/master">TAR</a></li>
+          <li class="title">DOWNLOADS</li>
+        </nav>
+      </div><!-- end header -->
+
+    <div class="wrapper">
+
+      <section>
+        <div id="title">
+          <h1>Slidemenu</h1>
+          <p>A simple SlideMenu library with two menu behind content for Android developer, just feel free to fork, this project need your contribution.</p>
+          <hr>
+          <span class="credits left">Project maintained by <a href="https://github.com/TangKe">TangKe</a></span>
+          <span class="credits right">Hosted on GitHub Pages &mdash; Theme by <a href="https://twitter.com/michigangraham">mattgraham</a></span>
+        </div>
+
+        <h1>
+<a name="slidemenudemo" class="anchor" href="#slidemenudemo"><span class="octicon octicon-link"></span></a>SlideMenu(<a href="https://github.com/TangKe/SlideMenu/wiki/SlideMenu.apk">Demo</a>)<img src="https://api.travis-ci.org/TangKe/SlideMenu.png?branch=master">
+</h1>
+
+<p>SlideMenu is a open source android library provide slide effect to the layout and show the hidden menu behind the layout</p>
+
+<p><img src="https://github.com/TangKe/SlideMenu/wiki/images/snap1.png" width="140"><img src="https://github.com/TangKe/SlideMenu/wiki/images/snap2.png" width="140"><img src="https://github.com/TangKe/SlideMenu/wiki/images/snap3.png" width="140"><img src="https://github.com/TangKe/SlideMenu/wiki/images/snap4.png" width="140"><img src="https://github.com/TangKe/SlideMenu/wiki/images/snap5.png" width="140"></p>
+
+<h1>
+<a name="setup" class="anchor" href="#setup"><span class="octicon octicon-link"></span></a>Setup</h1>
+
+<p>To enable fantasitic feature in your project with the following simple steps:</p>
+
+<ol>
+<li>Download the project from <a href="http://www.github.com/TangKe/SlideMenu.git">GitHub</a>
+</li>
+<li>Import it to your Eclipse workspace</li>
+<li>Set your project properties, then add a android project library, and select SlideMenu</li>
+</ol><h1>
+<a name="usage" class="anchor" href="#usage"><span class="octicon octicon-link"></span></a>Usage</h1>
+
+<p>Use the SlideMenu as a View as usual, Java and XML are both supported</p>
+
+<h2>
+<a name="java-example" class="anchor" href="#java-example"><span class="octicon octicon-link"></span></a>Java example:</h2>
+
+<div class="highlight"><pre><span class="kd">public</span> <span class="kd">class</span> <span class="nc">SlideMenuActivity</span> <span class="kd">extends</span> <span class="n">Activity</span><span class="o">{</span>
+    <span class="nd">@Override</span>
+    <span class="kd">protected</span> <span class="kt">void</span> <span class="nf">onCreate</span><span class="o">(</span><span class="n">Bundle</span> <span class="n">savedInstanceState</span><span class="o">)</span> <span class="o">{</span>
+        <span class="kd">super</span><span class="o">.</span><span class="na">onCreate</span><span class="o">(</span><span class="n">savedInstanceState</span><span class="o">);</span>
+        <span class="n">SlideMenu</span> <span class="n">slideMenu</span> <span class="o">=</span> <span class="k">new</span> <span class="n">SlideMenu</span><span class="o">(</span><span class="k">this</span><span class="o">);</span>
+        <span class="n">setContentView</span><span class="o">(</span><span class="n">slideMenu</span><span class="o">);</span>
+
+        <span class="c1">// Setup the content</span>
+        <span class="n">View</span> <span class="n">contentView</span> <span class="o">=</span> <span class="k">new</span> <span class="n">View</span><span class="o">(</span><span class="k">this</span><span class="o">);</span>
+        <span class="n">slideMenu</span><span class="o">.</span><span class="na">addView</span><span class="o">(</span><span class="n">contentView</span><span class="o">,</span> <span class="k">new</span> <span class="n">SlideMenu</span><span class="o">.</span><span class="na">LayoutParams</span><span class="o">(</span>
+                <span class="n">LayoutParams</span><span class="o">.</span><span class="na">MATCH_PARENT</span><span class="o">,</span> <span class="n">LayoutParams</span><span class="o">.</span><span class="na">MATCH_PARENT</span><span class="o">,</span>
+                <span class="n">LayoutParams</span><span class="o">.</span><span class="na">ROLE_CONTENT</span><span class="o">));</span>
+
+        <span class="c1">// Setup the primary menu</span>
+        <span class="n">View</span> <span class="n">primaryMenu</span> <span class="o">=</span> <span class="k">new</span> <span class="n">View</span><span class="o">(</span><span class="k">this</span><span class="o">);</span>
+        <span class="n">slideMenu</span><span class="o">.</span><span class="na">addView</span><span class="o">(</span><span class="n">primaryMenu</span><span class="o">,</span> <span class="k">new</span> <span class="n">SlideMenu</span><span class="o">.</span><span class="na">LayoutParams</span><span class="o">(</span><span class="mi">300</span><span class="o">,</span>
+                <span class="n">LayoutParams</span><span class="o">.</span><span class="na">MATCH_PARENT</span><span class="o">,</span> <span class="n">LayoutParams</span><span class="o">.</span><span class="na">ROLE_PRIMARY_MENU</span><span class="o">));</span>
+
+        <span class="c1">// Setup the secondary menu</span>
+        <span class="n">View</span> <span class="n">secondaryMenu</span> <span class="o">=</span> <span class="k">new</span> <span class="n">View</span><span class="o">(</span><span class="k">this</span><span class="o">);</span>
+        <span class="n">slideMenu</span><span class="o">.</span><span class="na">addView</span><span class="o">(</span><span class="n">secondaryMenu</span><span class="o">,</span> <span class="k">new</span> <span class="n">SlideMenu</span><span class="o">.</span><span class="na">LayoutParams</span><span class="o">(</span><span class="mi">300</span><span class="o">,</span>
+                <span class="n">LayoutParams</span><span class="o">.</span><span class="na">MATCH_PARENT</span><span class="o">,</span> <span class="n">LayoutParams</span><span class="o">.</span><span class="na">ROLE_SECONDARY_MENU</span><span class="o">));</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</pre></div>
+
+<h2>
+<a name="xml-layout-example" class="anchor" href="#xml-layout-example"><span class="octicon octicon-link"></span></a>XML layout example:</h2>
+
+<div class="highlight"><pre><span class="nt">&lt;com.aretha.slidemenu.SlideMenu</span> <span class="na">xmlns:android=</span><span class="s">"http://schemas.android.com/apk/res/android"</span>
+    <span class="na">xmlns:slidemenudemo=</span><span class="s">"http://schemas.android.com/apk/res-auto"</span>
+    <span class="na">android:id=</span><span class="s">"@+id/slideMenu"</span>
+    <span class="na">android:layout_width=</span><span class="s">"match_parent"</span>
+    <span class="na">android:layout_height=</span><span class="s">"match_parent"</span>
+    <span class="na">slidemenudemo:primaryShadowDrawable=</span><span class="s">"reference"</span>
+    <span class="na">slidemenudemo:primaryShadowWidth=</span><span class="s">"dimension"</span>
+    <span class="na">slidemenudemo:secondaryShadowWidth=</span><span class="s">"dimension"</span>
+    <span class="na">slidemenudemo:sencondaryShadowDrawable=</span><span class="s">"reference"</span>
+    <span class="na">slidemenudemo:slideDirection=</span><span class="s">"left|right"</span> <span class="nt">&gt;</span>
+
+    <span class="nt">&lt;View</span>
+        <span class="na">android:layout_width=</span><span class="s">"match_parent"</span>
+        <span class="na">android:layout_height=</span><span class="s">"match_parent"</span>
+        <span class="na">slidemenudemo:layout_role=</span><span class="s">"content"</span> <span class="nt">/&gt;</span>
+
+    <span class="nt">&lt;View</span>
+        <span class="na">android:layout_width=</span><span class="s">"200dip"</span>
+        <span class="na">android:layout_height=</span><span class="s">"match_parent"</span>
+        <span class="na">slidemenudemo:layout_role=</span><span class="s">"primaryMenu"</span> <span class="nt">/&gt;</span>
+
+    <span class="nt">&lt;View</span>
+        <span class="na">android:layout_width=</span><span class="s">"300dip"</span>
+        <span class="na">android:layout_height=</span><span class="s">"match_parent"</span>
+        <span class="na">slidemenudemo:layout_role=</span><span class="s">"secondaryMenu"</span> <span class="nt">/&gt;</span>
+
+<span class="nt">&lt;/com.aretha.slidemenu.SlideMenu&gt;</span>
+</pre></div>
+
+<p><em>NOTE: the children of SlideMenu must be specified layout_role attribute, otherwise the SlideMenu will throw a Exception. SlideMenu must be the root of layout.</em></p>
+
+<ul>
+<li>
+<code>primaryShadowWidth</code> the shadow width above primary menu, left side of content</li>
+<li>
+<code>secondaryShadowWidth</code> the shadow width above secondary menu, right side of content</li>
+<li>
+<code>primaryShadowDrawable</code> the shadow drawable above primary menu, left side of content</li>
+<li>
+<code>sencondaryShadowDrawable</code> the shadow drawable above secondary menu, right side of content</li>
+<li>
+<code>slideDirection</code> specified the slide direction of SlideMenu, left, right, left|right</li>
+</ul><h1>
+<a name="author" class="anchor" href="#author"><span class="octicon octicon-link"></span></a>Author</h1>
+
+<p>Tang Ke
+<a href="mailto:tang.ke@me.com">tang.ke@me.com</a></p>
+
+<h1>
+<a name="trello" class="anchor" href="#trello"><span class="octicon octicon-link"></span></a>Trello</h1>
+
+<p>Please visit this <a href="https://trello.com/board/slidemenu/514932078a91614c640056df">board</a> to see the plan of this repo</p>
+
+<h1>
+<a name="license" class="anchor" href="#license"><span class="octicon octicon-link"></span></a>License</h1>
+
+<pre><code>Copyright (c) 2011-2013 Tang Ke
+
+Licensed under the Apache License, Version 2.0 (the "License");
+you may not use this file except in compliance with the License.
+You may obtain a copy of the License at
+
+    http://www.apache.org/licenses/LICENSE-2.0
+
+Unless required by applicable law or agreed to in writing, software
+distributed under the License is distributed on an "AS IS" BASIS,
+WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+See the License for the specific language governing permissions and
+limitations under the License.
+</code></pre>
+      </section>
+
+    </div>
+    <!--[if !IE]><script>fixScale(document);</script><![endif]-->
+    
+  </body>
+</html>
