@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<me.tangke.slidemenu.SlideMenu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:slidemenu="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/slideMenu"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content" >
+
+    <TextView
+        android:id="@+id/text"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        slidemenu:layout_role="content"
+        android:background="?android:attr/windowBackground"
+        android:padding="10dp"
+        android:text="@string/large_text" />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        slidemenu:layout_role="primaryMenu"
+        android:text="@string/hide_view" />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        slidemenu:layout_role="secondaryMenu"
+        android:text="@string/hide_view" />
+
+</me.tangke.slidemenu.SlideMenu>

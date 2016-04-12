@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string-array name="interpolator">
+        <item>默认</item>
+        <item>加速减速</item>
+        <item>加速</item>
+        <item>抖动</item>
+        <item>起始弹跳</item>
+        <item>弹跳</item>
+        <item>减速</item>
+        <item>线性</item>
+        <item>回弹</item>
+    </string-array>
+
+</resources>
