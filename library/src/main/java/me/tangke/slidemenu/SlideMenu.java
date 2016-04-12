@@ -279,8 +279,7 @@ public class SlideMenu extends ViewGroup {
                         ViewGroup.LayoutParams params) {
         if (!(params instanceof LayoutParams)) {
             throw new IllegalArgumentException(
-                    "The parameter params must a instance of com.aretha.slidemenu" +
-                            ".SlideMenu$LayoutParams");
+                    "The parameter params must a instance of " + LayoutParams.class.getName());
         }
 
         if (null == params) {
