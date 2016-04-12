@@ -1,4 +1,30 @@
 apply plugin: 'com.android.library'
+apply plugin: 'com.github.dcendents.android-maven'
+apply plugin: 'com.jfrog.bintray'
+
+ext {
+    bintrayRepo = 'maven'
+    bintrayName = 'SlideMenu'
+
+    publishedGroupId = 'me.tangke'
+    libraryName = 'SlideMenu'
+    artifact = 'SlideMenu'
+
+    libraryDescription = 'SlideMenu is a open source android library provide slide effect to the layout and show the hidden menu behind the layout'
+
+    siteUrl = 'http://github.com/TangKe/SlideMenu'
+    gitUrl = 'http://github.com/TangKe/SlideMenu.git'
+
+    libraryVersion = '1.1.0'
+
+    developerId = 'TangKe'
+    developerName = 'TangKe'
+    developerEmail = 'tang.ke@me.com'
+
+    licenseName = 'The Apache Software License, Version 2.0'
+    licenseUrl = 'http://www.apache.org/licenses/LICENSE-2.0.txt'
+    allLicenses = ["Apache-2.0"]
+}
 
 android {
     compileSdkVersion 23
@@ -23,3 +49,6 @@ dependencies {
     testCompile 'junit:junit:4.12'
     compile 'com.android.support:appcompat-v7:23.3.0'
 }
+
+apply from: 'https://raw.githubusercontent.com/nuuneoi/JCenter/master/installv1.gradle'
+apply from: 'https://raw.githubusercontent.com/nuuneoi/JCenter/master/bintrayv1.gradle'

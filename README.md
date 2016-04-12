@@ -1,4 +1,4 @@
-SlideMenu([Demo][2])<img src="https://api.travis-ci.org/TangKe/SlideMenu.png?branch=master" />
+SlideMenu([Demo][1])<img src="https://api.travis-ci.org/TangKe/SlideMenu.png?branch=master" />
 =========
 SlideMenu is a open source android library provide slide effect to the layout and show the hidden menu behind the layout
 
@@ -9,11 +9,10 @@ SlideMenu is a open source android library provide slide effect to the layout an
 <img src="https://github.com/TangKe/SlideMenu/wiki/images/snap5.png" width="140" />
 
 #Setup
-To enable fantasitic feature in your project with the following simple steps:
-
-1. Download the project from [GitHub][1]
-2. Import it to your Eclipse workspace
-3. Set your project properties, then add a android project library, and select SlideMenu
+To enable fantastic feature in your project just add follow line to your build.gradle file
+```groovy
+compile 'me.tangke:SlideMenu:1.1.0'
+```
 
 #Usage
 Use the SlideMenu as a View as usual, Java and XML are both supported
@@ -47,7 +46,7 @@ public class SlideMenuActivity extends Activity{
 
 ##XML layout example:
 ```xml
-<com.aretha.slidemenu.SlideMenu xmlns:android="http://schemas.android.com/apk/res/android"
+<me.tangke.slidemenu.SlideMenu xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:slidemenudemo="http://schemas.android.com/apk/res-auto"
     android:id="@+id/slideMenu"
     android:layout_width="match_parent"
@@ -73,7 +72,7 @@ public class SlideMenuActivity extends Activity{
         android:layout_height="match_parent"
         slidemenudemo:layout_role="secondaryMenu" />
 
-</com.aretha.slidemenu.SlideMenu>
+</me.tangke.slidemenu.SlideMenu>
 ```
 *NOTE: the children of SlideMenu must be specified layout_role attribute, otherwise the SlideMenu will throw a Exception. SlideMenu must be the root of layout.*
 * `primaryShadowWidth` the shadow width above primary menu, left side of content
@@ -87,7 +86,7 @@ Tang Ke
 tang.ke@me.com
 
 #Trello
-Please visit this [board][3] to see the plan of this repo
+Please visit this [board][2] to see the plan of this repo
 
 #License
     Copyright (c) 2011-2013 Tang Ke
@@ -104,7 +103,6 @@ Please visit this [board][3] to see the plan of this repo
     See the License for the specific language governing permissions and
     limitations under the License.
 
-[1]: http://www.github.com/TangKe/SlideMenu.git
-[2]: https://github.com/TangKe/SlideMenu/wiki/SlideMenu.apk
-[3]: https://trello.com/board/slidemenu/514932078a91614c640056df
-[4]: https://travis-ci.org/TangKe/SlideMenu
+[1]: https://github.com/TangKe/SlideMenu/wiki/SlideMenu.apk
+[2]: https://trello.com/board/slidemenu/514932078a91614c640056df
+[3]: https://travis-ci.org/TangKe/SlideMenu
