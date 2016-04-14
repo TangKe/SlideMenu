@@ -6,9 +6,9 @@ ext {
     bintrayRepo = 'maven'
     bintrayName = 'SlideMenu'
 
-    publishedGroupId = 'me.tangke'
+    publishedGroupId = 'me.tangke.slidemenu'
     libraryName = 'SlideMenu'
-    artifact = 'SlideMenu'
+    artifact = 'slidemenu'
 
     libraryDescription = 'SlideMenu is a open source android library provide slide effect to the layout and show the hidden menu behind the layout'
 
@@ -17,8 +17,8 @@ ext {
 
     libraryVersion = '1.1.0'
 
-    developerId = 'TangKe'
-    developerName = 'TangKe'
+    developerId = 'tangke'
+    developerName = 'Tang Ke'
     developerEmail = 'tang.ke@me.com'
 
     licenseName = 'The Apache Software License, Version 2.0'
