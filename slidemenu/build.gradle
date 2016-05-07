@@ -15,7 +15,7 @@ ext {
     siteUrl = 'http://github.com/TangKe/SlideMenu'
     gitUrl = 'http://github.com/TangKe/SlideMenu.git'
 
-    libraryVersion = '1.1.0'
+    libraryVersion = '1.2.0'
 
     developerId = 'tangke'
     developerName = 'Tang Ke'
@@ -33,8 +33,8 @@ android {
     defaultConfig {
         minSdkVersion 8
         targetSdkVersion 23
-        versionCode 8
-        versionName "1.1.0"
+        versionCode 10
+        versionName "1.2.0"
     }
     buildTypes {
         release {
@@ -46,7 +46,7 @@ android {
 
 dependencies {
     compile fileTree(dir: 'libs', include: ['*.jar'])
-    compile 'com.android.support:appcompat-v7:23.3.0'
+    compile 'com.android.support:support-v4:23.3.0'
 }
 
 apply from: 'https://raw.githubusercontent.com/nuuneoi/JCenter/master/installv1.gradle'
