@@ -69,7 +69,7 @@ public class SlideMenu extends ViewGroup {
     private final static int POSITION_MIDDLE = 0;
     private final static int POSITION_RIGHT = 1;
     private int mCurrentContentPosition;
-    private int mCurrentState;
+    private int mCurrentState = STATE_CLOSE;
 
     private View mContent;
     private View mPrimaryMenu;
@@ -868,13 +868,8 @@ public class SlideMenu extends ViewGroup {
         final int slideDirectionFlag = mSlideDirectionFlag;
         final int currentContentOffset = mCurrentContentOffset = Math
                 .min((slideDirectionFlag & FLAG_DIRECTION_RIGHT) == FLAG_DIRECTION_RIGHT ?
-                                mContentBoundsRight
-                                : 0,
-                        Math.max(
-                                currentOffset,
-                                (slideDirectionFlag & FLAG_DIRECTION_LEFT) == FLAG_DIRECTION_LEFT
-                                        ? mContentBoundsLeft
-                                        : 0));
+                        mContentBoundsRight : 0, Math.max(currentOffset, (slideDirectionFlag &
+                        FLAG_DIRECTION_LEFT) == FLAG_DIRECTION_LEFT ? mContentBoundsLeft : 0));
         if (null != mSlideStateChangeListener) {
             float slideOffsetPercent = 0;
             if (0 < currentContentOffset) {

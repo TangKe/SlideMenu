@@ -15,7 +15,7 @@ ext {
     siteUrl = 'http://github.com/TangKe/SlideMenu'
     gitUrl = 'http://github.com/TangKe/SlideMenu.git'
 
-    libraryVersion = '1.2.0'
+    libraryVersion = '1.2.1'
 
     developerId = 'tangke'
     developerName = 'Tang Ke'
