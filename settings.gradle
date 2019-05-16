@@ -1,1 +1,1 @@
-include ':sample', ':slidemenu'
+include ':sample', ':library'

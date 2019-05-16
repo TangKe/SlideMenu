@@ -7,7 +7,7 @@
     android:layout_height="match_parent"
     android:layout_gravity="center"
     android:background="?android:attr/windowBackground"
-    slidemenu:layout_role="content">
+    slidemenu:layout_slide_menu_role="content">
 
     <TextView
         android:layout_width="wrap_content"

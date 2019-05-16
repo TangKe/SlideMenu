@@ -1,15 +1,14 @@
 apply plugin: 'com.android.application'
 
 android {
-    compileSdkVersion 23
-    buildToolsVersion "23.0.3"
+    compileSdkVersion versions.compileSdkVersion
 
     defaultConfig {
-        applicationId "me.tangke.slidemenusample"
-        minSdkVersion 8
-        targetSdkVersion 23
-        versionCode 11
-        versionName "1.2.1"
+        applicationId "ke.tang.slidemenu.sample"
+        minSdkVersion versions.minSdkVersion
+        targetSdkVersion versions.targetSdkVersion
+        versionCode versions.versionCode
+        versionName versions.versionName
     }
     buildTypes {
         release {
@@ -20,6 +19,7 @@ android {
 }
 
 dependencies {
-    compile fileTree(include: ['*.jar'], dir: 'libs')
-    compile project(':slidemenu')
+    implementation fileTree(include: ['*.jar'], dir: 'libs')
+    implementation "com.android.support:appcompat-v7:$versions.library.support"
+    implementation project(':library')
 }

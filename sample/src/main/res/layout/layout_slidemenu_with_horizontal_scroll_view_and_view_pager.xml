@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="?android:attr/windowBackground"
-    slidemenu:layout_role="content">
+    slidemenu:layout_slide_menu_role="content">
 
     <HorizontalScrollView
         android:id="@+id/horizontalScrollView"

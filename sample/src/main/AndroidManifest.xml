@@ -1,7 +1,7 @@
-<manifest package="me.tangke.slidemenusample"
-          xmlns:android="http://schemas.android.com/apk/res/android">
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="ke.tang.slidemenu.sample">
 
-    <uses-permission android:name="android.permission.INTERNET"/>
+    <uses-permission android:name="android.permission.INTERNET" />
 
     <application
         android:allowBackup="true"
@@ -9,73 +9,70 @@
         android:label="@string/app_name"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name="DemoBundleActivity">
+        <activity android:name=".DemoBundleActivity">
             <intent-filter>
-                <action android:name="android.intent.action.MAIN"/>
+                <action android:name="android.intent.action.MAIN" />
 
-                <category android:name="android.intent.category.LAUNCHER"/>
+                <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
         <activity
             android:name=".activity.SlideMenuAttribute"
             android:label="@string/slidemenu_attribute">
             <intent-filter>
-                <action android:name="me.tangke.DEMO"/>
+                <action android:name="${applicationId}.DEMO" />
             </intent-filter>
         </activity>
         <activity
             android:name=".activity.SlideMenuCallback"
             android:label="@string/slidemenu_callback">
             <intent-filter>
-                <action android:name="me.tangke.DEMO"/>
+                <action android:name="${applicationId}.DEMO" />
             </intent-filter>
         </activity>
         <activity
             android:name=".activity.SlideMenuWithHorizontalScrollView"
             android:label="@string/slidemenu_with_horizontal_scroll_view">
             <intent-filter>
-                <action android:name="me.tangke.DEMO"/>
+                <action android:name="${applicationId}.DEMO" />
             </intent-filter>
         </activity>
         <activity
             android:name=".activity.SlideMenuWithViewPager"
             android:label="@string/slidemenu_with_view_pager">
             <intent-filter>
-                <action android:name="me.tangke.DEMO"/>
+                <action android:name="${applicationId}.DEMO" />
             </intent-filter>
         </activity>
         <activity
             android:name=".activity.SlideMenuWithWebView"
             android:label="@string/slidemenu_with_web_view">
             <intent-filter>
-                <action android:name="me.tangke.DEMO"/>
+                <action android:name="${applicationId}.DEMO" />
             </intent-filter>
         </activity>
         <activity
             android:name=".activity.SlideMenuWithHorizontalScrollViewAndViewPager"
             android:label="@string/slidemenu_with_horizontal_scroll_view_and_view_pager">
             <intent-filter>
-                <action android:name="me.tangke.DEMO"/>
+                <action android:name="${applicationId}.DEMO" />
             </intent-filter>
         </activity>
-        <activity android:name=".activity.PrimaryActivity">
-        </activity>
-        <activity android:name=".activity.SecondaryActivity">
-        </activity>
+        <activity android:name=".activity.PrimaryActivity"></activity>
+        <activity android:name=".activity.SecondaryActivity"></activity>
         <activity
             android:name=".activity.SlideMenuWithActivityGroup"
             android:label="@string/slidemenu_with_activity_group">
             <intent-filter>
-                <action android:name="me.tangke.DEMO"/>
+                <action android:name="${applicationId}.DEMO" />
             </intent-filter>
         </activity>
-        <activity android:name=".activity.ContentActivity">
-        </activity>
+        <activity android:name=".activity.ContentActivity"></activity>
         <activity
             android:name=".activity.SlideMenuInListView"
             android:label="@string/slidemenu_in_listview">
             <intent-filter>
-                <action android:name="me.tangke.DEMO"/>
+                <action android:name="${applicationId}.DEMO" />
             </intent-filter>
         </activity>
     </application>

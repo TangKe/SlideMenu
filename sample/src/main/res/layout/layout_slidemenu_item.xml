@@ -1,29 +1,29 @@
 <?xml version="1.0" encoding="utf-8"?>
-<me.tangke.slidemenu.SlideMenu xmlns:android="http://schemas.android.com/apk/res/android"
+<ke.tang.slidemenu.SlideMenu xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:slidemenu="http://schemas.android.com/apk/res-auto"
     android:id="@+id/slideMenu"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content" >
+    android:layout_height="wrap_content">
 
     <TextView
         android:id="@+id/text"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        slidemenu:layout_role="content"
         android:background="?android:attr/windowBackground"
         android:padding="10dp"
-        android:text="@string/large_text" />
+        android:text="@string/large_text"
+        slidemenu:layout_slide_menu_role="content" />
 
     <Button
         android:layout_width="wrap_content"
         android:layout_height="match_parent"
-        slidemenu:layout_role="primaryMenu"
-        android:text="@string/hide_view" />
+        android:text="@string/hide_view"
+        slidemenu:layout_slide_menu_role="primaryMenu" />
 
     <Button
         android:layout_width="wrap_content"
         android:layout_height="match_parent"
-        slidemenu:layout_role="secondaryMenu"
-        android:text="@string/hide_view" />
+        android:text="@string/hide_view"
+        slidemenu:layout_slide_menu_role="secondaryMenu" />
 
-</me.tangke.slidemenu.SlideMenu>
+</ke.tang.slidemenu.SlideMenu>

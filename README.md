@@ -11,7 +11,7 @@ SlideMenu is a open source android library provide slide effect to the layout an
 #Setup
 To enable fantastic feature in your project just add follow line to your build.gradle file
 ```groovy
-compile 'me.tangke.slidemenu:slidemenu:1.1.0'
+compile 'ke.tang:slidemenu:1.2.1'
 ```
 
 #Usage
@@ -46,7 +46,7 @@ public class SlideMenuActivity extends Activity{
 
 ##XML layout example:
 ```xml
-<me.tangke.slidemenu.SlideMenu xmlns:android="http://schemas.android.com/apk/res/android"
+<ke.tang.slidemenu.SlideMenu xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:slidemenudemo="http://schemas.android.com/apk/res-auto"
     android:id="@+id/slideMenu"
     android:layout_width="match_parent"
@@ -72,7 +72,7 @@ public class SlideMenuActivity extends Activity{
         android:layout_height="match_parent"
         slidemenudemo:layout_role="secondaryMenu" />
 
-</me.tangke.slidemenu.SlideMenu>
+</ke.tang.slidemenu.SlideMenu>
 ```
 *NOTE: the children of SlideMenu must be specified layout_role attribute, otherwise the SlideMenu will throw a Exception. SlideMenu must be the root of layout.*
 * `primaryShadowWidth` the shadow width above primary menu, left side of content

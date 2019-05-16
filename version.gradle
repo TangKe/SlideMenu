@@ -1,0 +1,12 @@
+ext {
+    versions = [
+            compileSdkVersion: 28,
+            minSdkVersion    : 15,
+            targetSdkVersion : 28,
+            versionCode      : 4,
+            versionName      : '1.2.1',
+            library          : [
+                    support: '28.0.0'
+            ]
+    ]
+}

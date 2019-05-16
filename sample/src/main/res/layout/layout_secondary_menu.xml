@@ -6,4 +6,4 @@
     android:layout_height="match_parent"
     android:scaleType="center"
     android:src="@drawable/ic_launcher"
-    slidemenu:layout_role="secondaryMenu"/>
+    slidemenu:layout_slide_menu_role="secondaryMenu"/>
