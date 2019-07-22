@@ -25,7 +25,6 @@ import android.graphics.drawable.GradientDrawable;
 import android.graphics.drawable.GradientDrawable.Orientation;
 import android.os.Parcel;
 import android.os.Parcelable;
-import android.support.v4.view.ViewCompat;
 import android.util.AttributeSet;
 import android.util.TypedValue;
 import android.view.KeyEvent;
@@ -38,6 +37,8 @@ import android.view.ViewGroup;
 import android.view.animation.AnimationUtils;
 import android.view.animation.Interpolator;
 import android.widget.Scroller;
+
+import androidx.core.view.ViewCompat;
 
 import ke.tang.slidemenu.utils.ScrollDetectors;
 
@@ -669,6 +670,7 @@ public class SlideMenu extends ViewGroup {
 
                 if (Math.abs(dx) >= mTouchSlop && mIsTapInContent) {
                     if (!canScrollHorizontally(this, (int) dx, (int) x, (int) y)) {
+                        getParent().requestDisallowInterceptTouchEvent(true);
                         setCurrentState(STATE_DRAG);
                         return true;
                     }

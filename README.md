@@ -11,7 +11,7 @@ SlideMenu is a open source android library provide slide effect to the layout an
 #Setup
 To enable fantastic feature in your project just add follow line to your build.gradle file
 ```groovy
-compile 'ke.tang:slidemenu:1.2.1'
+compile 'ke.tang:slidemenu:1.2.2'
 ```
 
 #Usage

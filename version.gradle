@@ -4,9 +4,12 @@ ext {
             minSdkVersion    : 15,
             targetSdkVersion : 28,
             versionCode      : 4,
-            versionName      : '1.2.1',
+            versionName      : '1.2.2',
             library          : [
-                    support: '28.0.0'
+                    appcompat: '1.0.2',
+                    viewpager: '1.0.0',
+                    swiperefreshlayout: '1.0.0',
+                    core: '1.0.2',
             ]
     ]
 }

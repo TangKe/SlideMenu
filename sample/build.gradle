@@ -20,6 +20,6 @@ android {
 
 dependencies {
     implementation fileTree(include: ['*.jar'], dir: 'libs')
-    implementation "com.android.support:appcompat-v7:$versions.library.support"
+    implementation "androidx.appcompat:appcompat:${versions.library.appcompat}"
     implementation project(':library')
 }

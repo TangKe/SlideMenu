@@ -1,7 +1,8 @@
 package ke.tang.slidemenu.sample.activity;
 
 import android.os.Bundle;
-import android.support.v4.view.ViewPager;
+
+import androidx.viewpager.widget.ViewPager;
 
 import ke.tang.slidemenu.sample.BaseSlideMenuActivity;
 import ke.tang.slidemenu.sample.R;

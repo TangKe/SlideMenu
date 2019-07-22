@@ -1,8 +1,9 @@
 package ke.tang.slidemenu.sample.fragment;
 
 import android.os.Bundle;
-import android.support.v4.app.ListFragment;
 import android.widget.ArrayAdapter;
+
+import androidx.fragment.app.ListFragment;
 
 import ke.tang.slidemenu.sample.R;
 
