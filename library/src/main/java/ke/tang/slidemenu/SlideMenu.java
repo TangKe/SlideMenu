@@ -391,7 +391,7 @@ public class SlideMenu extends ViewGroup {
     }
 
     /**
-     * Set the slide mode:<br/>
+     * Set the slide mode:
      * {@link #MODE_SLIDE_CONTENT} {@link #MODE_SLIDE_WINDOW}
      *
      * @param slideMode
@@ -1008,7 +1008,7 @@ public class SlideMenu extends ViewGroup {
     }
 
     /**
-     * Detect whether the views inside content are slidable
+     * Detect whether the views inside content can slide
      */
     protected final boolean canScrollHorizontally(View v, int dx, int x, int y) {
         if (v instanceof ViewGroup) {

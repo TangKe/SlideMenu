@@ -21,5 +21,6 @@ android {
 dependencies {
     implementation fileTree(include: ['*.jar'], dir: 'libs')
     implementation "androidx.appcompat:appcompat:${versions.library.appcompat}"
+    implementation "androidx.annotation:annotation:${versions.library.annotation}"
     implementation project(':library')
 }
